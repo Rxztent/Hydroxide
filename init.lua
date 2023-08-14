@@ -191,9 +191,9 @@ local releaseInfo = HttpService:JSONDecode(game:HttpGetAsync("https://api.github
 useMethods({ import = environment.import })
 
 
-useMethods(import("methods/string"))
-useMethods(import("methods/table"))
-useMethods(import("methods/userdata"))
-useMethods(import("methods/environment"))
+import("methods/string")
+import("methods/table")
+import("methods/userdata")
+import("methods/environment")
 
 --import("ui/main")
