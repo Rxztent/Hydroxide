@@ -1,7 +1,7 @@
 ## Script
 ```lua
-local owner = "Upbolt"
-local branch = "revision"
+local owner = "Rxztent"
+local branch = "main"
 
 local function webImport(file)
     return loadstring(game:HttpGetAsync(("https://raw.githubusercontent.com/%s/Hydroxide/%s/%s.lua"):format(owner, branch, file)), file .. '.lua')()
@@ -13,8 +13,7 @@ webImport("ui/main")
 
 # Hydroxide
 <i>General purpose pen-testing tool for games on the Roblox engine</i>
-
-Report issues to our Discord server: https://discord.gg/DJxBwAX
+THIS IS NOT THE OFFICIAL HYDROXIDE
 
 <p align="center">
     <img src="https://cdn.discordapp.com/attachments/633472429917995038/722143730500501534/Hydroxide_Logo.png"/>
