@@ -465,14 +465,6 @@ local function generateScript(elementIndex)
         end
     end
 
-    setClipboard(
-        generatedScript:format(
-            (closureScript and getInstancePath(closureScript)) or "nil", 
-            closure.Name, 
-            index,
-            tableToString(currentConstants),
-            "100%"
-        )
     )
 end
 
@@ -556,7 +548,10 @@ getScriptContext:SetCallback(function()
         local script = getfenv(selectedLog.Closure.Data).script
             
         if typeof(script) == "Instance" then
-            setClipboard(getInstancePath(script))
+            setclipboard(getInstancePath(script))
+            
+             rconsoleprint("@@RED@@")
+             rconsoleprint(script)    
         end
     end
 end)
