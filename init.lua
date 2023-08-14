@@ -186,33 +186,7 @@ useMethods(globalMethods)
 
 local HttpService = game:GetService("HttpService")
 local releaseInfo = HttpService:JSONDecode(game:HttpGetAsync("https://api.github.com/repos/" .. user .. "/Hydroxide/releases"))[1]
-function environment.import(asset)
-	if importCache[asset] then
-		return unpack(importCache[asset])
-	end
 
-	if asset:find("rbxassetid://") then
-		assets = { game:GetObjects(asset)[1] }
-	elseif web then
-		local file = (hasFolderFunctions and "hydroxide/user/" .. user .. '/' .. asset .. ".lua") or ("hydroxide-" .. user .. '-' .. asset:gsub('/', '-') .. ".lua")
-		local ran, result = pcall(readFile, file)
-		local content
-
-		if not ran then
-			content = game:HttpGetAsync("https://raw.githubusercontent.com/" .. user .. "/Hydroxide/" .. branch .. '/' .. asset .. ".lua")
-			writeFile(file, content)
-		else
-			content = result
-		end
-
-		assets = { loadstring(content, asset .. '.lua')() }
-	else
-		assets = { loadstring(readFile("hydroxide/" .. asset .. ".lua"), asset .. '.lua')() }
-	end
-
-	importCache[asset] = assets
-	return unpack(assets)
-end
 
 useMethods({ import = environment.import })
 
